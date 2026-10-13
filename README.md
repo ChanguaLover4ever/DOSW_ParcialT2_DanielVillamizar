@@ -17,6 +17,7 @@ Servicio base para el Parcial Práctico del Segundo Tercio de Desarrollo Orienta
 9. [Docker](#9-docker)
 10. [CI/CD](#10-cicd)
 11. [Herramientas de modelado y diseño (evidencias)](#11-herramientas-de-modelado-y-diseño-evidencias)
+12. [Comandos para clonar y trabajar en otro equipo](#12-comandos-para-clonar-y-trabajar-en-otro-equipo)
 
 ## 1. Datos del estudiante
 
@@ -34,15 +35,19 @@ Este repositorio contiene el esqueleto de un servicio REST para el parcial prác
 
 ## 3. Despliegue
 
-> **Estado:** PENDIENTE. Completa estos datos cuando la aplicación esté publicada y verificada en Azure.
-
 | Recurso | URL |
 |---|---|
-| Aplicación en Azure | PENDIENTE: `https://<nombre-app>.azurewebsites.net` |
-| Health | PENDIENTE: `https://<nombre-app>.azurewebsites.net/api/v1/health` |
-| Swagger UI | PENDIENTE: `https://<nombre-app>.azurewebsites.net/swagger-ui/index.html` |
+| Aplicación en Azure | [https://dosw-parcial-t2-danielv.azurewebsites.net](https://dosw-parcial-t2-danielv.azurewebsites.net) |
+| Health | [https://dosw-parcial-t2-danielv.azurewebsites.net/api/v1/health](https://dosw-parcial-t2-danielv.azurewebsites.net/api/v1/health) |
+| Swagger UI | [https://dosw-parcial-t2-danielv.azurewebsites.net/swagger-ui/index.html](https://dosw-parcial-t2-danielv.azurewebsites.net/swagger-ui/index.html) |
 
 El endpoint de health debe responder HTTP 200 y Swagger debe cargar desde la URL pública antes de marcar el despliegue como listo.
+
+Capturas de verificación del servicio desplegado:
+
+| Health responde | Swagger UI |
+|---|---|
+| ![Health del servicio en Azure](docs/images/azure-health.png) | ![Swagger UI del servicio en Azure](docs/images/azure-swagger.png) |
 
 ## 4. Estructura del proyecto
 
@@ -149,7 +154,11 @@ Para generar también el reporte JaCoCo:
 mvn clean verify
 ```
 
-El reporte HTML se genera en `target/site/jacoco/index.html`. PENDIENTE: agrega capturas del resultado de pruebas y del reporte en `docs/images/` y enlázalas aquí, por ejemplo `docs/images/pruebas-maven.png` y `docs/images/reporte-jacoco.png`.
+El reporte HTML se genera en `target/site/jacoco/index.html`. Se ejecutó `mvn clean verify` y pasó `HealthControllerTest`. La captura del resumen actual de JaCoCo está aquí:
+
+![Reporte de cobertura JaCoCo](docs/images/tests-jacoco.png)
+
+La cobertura actual corresponde al scaffold y a la prueba del endpoint de health; no representa todavía cobertura de funcionalidades del dominio.
 
 ## 9. Docker
 
@@ -169,7 +178,11 @@ docker run --rm -p 8080:8080 `
   dosw-parcial:local
 ```
 
-Verifica `http://localhost:8080/api/v1/health`. El `.dockerignore` excluye del contexto de build archivos locales, documentación y posibles credenciales. PENDIENTE: agrega en `docs/images/` una captura de la imagen construida y del contenedor en ejecución.
+Verifica `http://localhost:8080/api/v1/health`. El `.dockerignore` excluye del contexto de build archivos locales, documentación y posibles credenciales.
+
+Captura del contenedor ejecutándose localmente:
+
+![Contenedor Docker local en ejecución](docs/images/docker-local.png)
 
 ## 10. CI/CD
 
@@ -185,16 +198,79 @@ Configura estos **Actions secrets** en `Settings → Secrets and variables → A
 | `AZURE_WEBAPP_NAME` | Nombre del Azure App Service |
 | `JWT_SECRET` | Secreto JWT codificado en Base64 |
 
-En el App Service configura, además, las variables de aplicación `MONGODB_URI`, `JWT_SECRET` y `WEBSITES_PORT=8080`. El repositorio y la imagen no deben contener credenciales. PENDIENTE: agrega una captura de una ejecución completa en verde en `docs/images/pipeline-verde.png`.
+En el App Service configura, además, las variables de aplicación `MONGODB_URI`, `JWT_SECRET` y `WEBSITES_PORT=8080`. El repositorio y la imagen no deben contener credenciales.
+
+Evidencia de la ejecución del pipeline:
+
+![Ejecución del pipeline CI/CD](docs/images/pipeline-success.png)
 
 ## 11. Herramientas de modelado y diseño (evidencias)
 
-Herramienta de modelado seleccionada: PENDIENTE (Lucidchart, Draw.io o Miro). Herramienta de diseño de interfaces: Figma.
+Herramienta de modelado seleccionada: Draw.io. Herramienta de diseño de interfaces: Figma.
 
-Guarda los archivos fuente editables de los diagramas en `docs/uml/` y sus exportes PNG o SVG en `docs/images/`. Agrega también capturas que evidencien el acceso a la cuenta de modelado y a Figma, sin exponer información privada o credenciales.
+El diagrama de arquitectura MVC está generado y disponible en formato editable y exportado:
 
-PENDIENTE: sube las evidencias y enlázalas aquí, por ejemplo:
+- [Archivo editable de Draw.io](docs/uml/diagram-mvc.drawio)
+- [Exportación SVG](docs/images/diagram-mvc.svg)
 
-- Diagrama UML: `docs/images/diagrama-uml.png`.
-- Evidencia de acceso a la herramienta de modelado: `docs/images/cuenta-modelado.png`.
-- Evidencia de acceso a Figma: `docs/images/cuenta-figma.png`.
+![Diagrama UML de la arquitectura MVC](docs/images/diagram-mvc.png)
+
+Agrega también capturas que evidencien el acceso a tu cuenta de modelado y a Figma, sin exponer información privada o credenciales:
+
+- Evidencia de acceso a la herramienta de modelado: `docs/images/cuenta-modelado.png` (pendiente).
+- Evidencia de acceso a Figma: `docs/images/cuenta-figma.png` (pendiente).
+
+## 12. Comandos para clonar y trabajar en otro equipo
+
+Requisitos: Git, JDK 21, Maven y Docker Desktop instalado y en ejecución. En PowerShell, clona el repositorio y cambia a la rama de trabajo:
+
+```powershell
+git clone https://github.com/ChanguaLover4ever/DOSW_ParcialT2_DanielVillamizar.git
+cd DOSW_ParcialT2_DanielVillamizar
+git switch develop
+git pull origin develop
+```
+
+Comprueba el proyecto y las pruebas:
+
+```powershell
+mvn clean verify
+```
+
+Para ejecutar el servicio dentro de Docker, primero construye la imagen y levanta MongoDB:
+
+```powershell
+docker build -t dosw-parcial:local .
+docker run -d --name mongo-parcial -p 27017:27017 mongo:7
+```
+
+Genera un secreto JWT temporal para esta sesión de PowerShell e inicia el servicio. No escribas el valor del secreto en un archivo versionado:
+
+```powershell
+[byte[]]$bytes = New-Object byte[] 32
+$rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+$rng.GetBytes($bytes)
+$env:JWT_SECRET = [Convert]::ToBase64String($bytes)
+
+docker run --rm --name dosw-parcial-local -p 8080:8080 `
+  -e "JWT_SECRET=$env:JWT_SECRET" `
+  -e "MONGODB_URI=mongodb://host.docker.internal:27017/dosw_parcial" `
+  dosw-parcial:local
+```
+
+En otra ventana, comprueba el endpoint de salud:
+
+```powershell
+Invoke-WebRequest http://localhost:8080/api/v1/health -UseBasicParsing
+```
+
+Para trabajar en la rama `develop`, crea una rama para tu cambio, guarda el trabajo y súbelo:
+
+```powershell
+git switch -c nombre-corto-del-cambio
+git add .
+git commit -m "Describe el cambio"
+git push -u origin nombre-corto-del-cambio
+```
+
+Abre un pull request hacia `develop` en GitHub. No hagas commit de secretos, archivos `.env`, tokens, certificados ni cadenas de conexión con credenciales.

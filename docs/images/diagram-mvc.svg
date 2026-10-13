@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-amber" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; fill: #1f2937; }
+      .title { font-size: 30px; font-weight: 700; }
+      .label { font-size: 20px; font-weight: 700; }
+      .body { font-size: 17px; }
+      .edge-label { font-size: 14px; fill: #374151; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1600" height="1000" fill="#ffffff"/>
+  <text x="800" y="52" text-anchor="middle" class="title">DOSW Parcial T2 · Arquitectura MVC por capas</text>
+
+  <rect x="610" y="90" width="380" height="76" class="card" fill="#e5e7eb" stroke="#6b7280"/>
+  <text x="800" y="122" text-anchor="middle" class="label">Cliente HTTP</text>
+  <text x="800" y="148" text-anchor="middle" class="body">Web / Swagger</text>
+
+  <rect x="455" y="220" width="690" height="154" class="card" fill="#eff6ff" stroke="#3b82f6"/>
+  <path d="M455 268 H1145" stroke="#3b82f6" stroke-width="2"/>
+  <text x="800" y="253" text-anchor="middle" class="label">controller</text>
+  <text x="800" y="300" text-anchor="middle" class="body">HealthController · endpoints REST</text>
+  <text x="800" y="329" text-anchor="middle" class="body">dtos/request · dtos/response · handlers · mappers (IN)</text>
+
+  <rect x="455" y="468" width="690" height="154" class="card" fill="#f0fdf4" stroke="#22c55e"/>
+  <path d="M455 516 H1145" stroke="#22c55e" stroke-width="2"/>
+  <text x="800" y="501" text-anchor="middle" class="label">core</text>
+  <text x="800" y="548" text-anchor="middle" class="body">services · models de dominio</text>
+  <text x="800" y="577" text-anchor="middle" class="body">validators · utils</text>
+
+  <rect x="455" y="716" width="690" height="154" class="card" fill="#fffbeb" stroke="#f59e0b"/>
+  <path d="M455 764 H1145" stroke="#f59e0b" stroke-width="2"/>
+  <text x="800" y="749" text-anchor="middle" class="label">persistence</text>
+  <text x="800" y="796" text-anchor="middle" class="body">repositories (MongoRepository) · entities (@Document)</text>
+  <text x="800" y="825" text-anchor="middle" class="body">mappers (OUT: dominio ↔ documento)</text>
+
+  <path d="M800 166 V212" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="815" y="195" class="edge-label">HTTP request / response</text>
+  <path d="M800 374 V458" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="815" y="423" class="edge-label">DTO ↔ dominio</text>
+  <path d="M800 622 V706" stroke="#d97706" stroke-width="3" marker-end="url(#arrow-amber)"/>
+  <text x="815" y="671" class="edge-label">dominio ↔ documento</text>
+
+  <rect x="1240" y="750" width="280" height="100" class="card" fill="#fef3c7" stroke="#d97706"/>
+  <text x="1380" y="791" text-anchor="middle" class="label">MongoDB</text>
+  <text x="1380" y="820" text-anchor="middle" class="body">Base de datos documental</text>
+  <path d="M1145 793 H1230" stroke="#d97706" stroke-width="3" marker-end="url(#arrow-amber)"/>
+  <text x="1152" y="780" class="edge-label">lectura / escritura</text>
+
+  <rect x="70" y="252" width="280" height="126" class="card" fill="#faf5ff" stroke="#a855f7"/>
+  <text x="210" y="286" text-anchor="middle" class="label">config</text>
+  <text x="210" y="318" text-anchor="middle" class="body">SecurityConfig</text>
+  <text x="210" y="346" text-anchor="middle" class="body">Spring Security · Swagger</text>
+  <path d="M350 315 H435" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow-purple)"/>
+  <text x="355" y="302" class="edge-label">protege endpoints</text>
+
+  <rect x="70" y="490" width="280" height="112" class="card" fill="#faf5ff" stroke="#a855f7"/>
+  <text x="210" y="526" text-anchor="middle" class="label">main</text>
+  <text x="210" y="556" text-anchor="middle" class="body">ParcialApplication</text>
+  <text x="210" y="581" text-anchor="middle" class="body">@SpringBootApplication</text>
+  <path d="M350 538 H400 V346 H445" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow-purple)"/>
+  <text x="366" y="523" class="edge-label">inicia Spring</text>
+
+  <path d="M70 664 H350 L372 686 V864 H70 Z" fill="#f9fafb" stroke="#6b7280" stroke-width="2"/>
+  <path d="M350 664 V686 H372" fill="none" stroke="#6b7280" stroke-width="2"/>
+  <text x="95" y="708" class="label">resources</text>
+  <text x="95" y="743" class="body">application.yaml</text>
+  <text x="95" y="775" class="body">MONGODB_URI · PORT</text>
+  <text x="95" y="807" class="body">JWT_SECRET</text>
+  <path d="M210 664 V612" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arrow-purple)"/>
+  <text x="222" y="644" class="edge-label">configuración</text>
+
+  <rect x="405" y="911" width="790" height="58" rx="10" fill="#f3f4f6" stroke="#d1d5db"/>
+  <text x="800" y="936" text-anchor="middle" class="body">Flujo principal: Cliente → Controller → Core → Persistence → MongoDB</text>
+  <text x="800" y="959" text-anchor="middle" class="edge-label">El controller trabaja con DTOs; el dominio no depende de documentos MongoDB.</text>
+</svg>

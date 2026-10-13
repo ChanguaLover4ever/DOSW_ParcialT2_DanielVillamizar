@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram id="mvc-architecture" name="MVC por capas">
+    <mxGraphModel dx="1280" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="DOSW Parcial T2 - Arquitectura MVC por capas" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="260" y="30" width="880" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="Cliente HTTP&lt;br&gt;Web / Swagger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#6B7280;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="570" y="110" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="controller" value="&lt;b&gt;controller&lt;/b&gt;&lt;br&gt;HealthController&lt;br&gt;DTOs request / response&lt;br&gt;handlers · mappers (IN)" style="swimlane;html=1;whiteSpace=wrap;startSize=32;rounded=1;fillColor=#DBEAFE;swimlaneFillColor=#EFF6FF;strokeColor=#3B82F6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="480" y="240" width="440" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="core" value="&lt;b&gt;core&lt;/b&gt;&lt;br&gt;services&lt;br&gt;models (dominio)&lt;br&gt;validators · utils" style="swimlane;html=1;whiteSpace=wrap;startSize=32;rounded=1;fillColor=#DCFCE7;swimlaneFillColor=#F0FDF4;strokeColor=#22C55E;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="480" y="470" width="440" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="persistence" value="&lt;b&gt;persistence&lt;/b&gt;&lt;br&gt;repositories (MongoRepository)&lt;br&gt;entities (@Document)&lt;br&gt;mappers (OUT)" style="swimlane;html=1;whiteSpace=wrap;startSize=32;rounded=1;fillColor=#FEF3C7;swimlaneFillColor=#FFFBEB;strokeColor=#F59E0B;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="480" y="700" width="440" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="mongodb" value="MongoDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbls=1;backgroundOutline=1;size=15;fillColor=#FDE68A;strokeColor=#D97706;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="740" width="220" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="config" value="&lt;b&gt;config&lt;/b&gt;&lt;br&gt;SecurityConfig&lt;br&gt;JWT / Spring Security&lt;br&gt;Swagger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#A855F7;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="80" y="260" width="260" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="main" value="&lt;b&gt;main&lt;/b&gt;&lt;br&gt;ParcialApplication&lt;br&gt;Spring Boot entry point" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#A855F7;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="resources" value="resources&lt;br&gt;application.yaml&lt;br&gt;MONGODB_URI · PORT · JWT_SECRET" style="shape=note;whiteSpace=wrap;html=1;size=15;fillColor=#F9FAFB;strokeColor=#6B7280;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="80" y="660" width="280" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="HTTP request / response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#2563EB;fontSize=12;" edge="1" parent="1" source="client" target="controller">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="DTO ↔ dominio" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#16A34A;fontSize=12;" edge="1" parent="1" source="controller" target="core">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="dominio ↔ documentos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#D97706;fontSize=12;" edge="1" parent="1" source="core" target="persistence">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="lectura / escritura" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#D97706;fontSize=12;" edge="1" parent="1" source="persistence" target="mongodb">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="configura componentes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;strokeColor=#7C3AED;fontSize=12;" edge="1" parent="1" source="main" target="controller">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="seguridad / OpenAPI" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;strokeColor=#7C3AED;fontSize=12;" edge="1" parent="1" source="config" target="controller">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="configuración externa" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;strokeColor=#6B7280;fontSize=12;" edge="1" parent="1" source="resources" target="main">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="Flujo principal: Cliente → Controller → Core → Persistence → MongoDB&lt;br&gt;Mapper IN: DTO ↔ dominio · Mapper OUT: dominio ↔ documento MongoDB&lt;br&gt;El controller no depende de documentos de persistencia." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=13;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="980" y="250" width="340" height="150" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

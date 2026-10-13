@@ -2,8 +2,6 @@
 
 Servicio base para el Parcial Práctico del Segundo Tercio de Desarrollo Orientado a Software (DOSW). El proyecto usa Spring Boot y MongoDB, y deja preparada la estructura MVC, el endpoint de salud, la documentación OpenAPI y el pipeline de construcción y despliegue.
 
-> **Antes de entregar:** reemplaza todos los valores marcados como `PENDIENTE` con tus datos reales y agrega las evidencias indicadas. No publiques secretos, tokens ni cadenas de conexión.
-
 ## Índice
 
 1. [Datos del estudiante](#1-datos-del-estudiante)
@@ -23,11 +21,10 @@ Servicio base para el Parcial Práctico del Segundo Tercio de Desarrollo Orienta
 
 | Dato | Valor |
 |---|---|
-| Nombre completo | PENDIENTE: escribe tu nombre completo |
-| Grupo | PENDIENTE: escribe tu grupo |
+| Nombre completo | Daniel José Villamizar Castellanos |
+| Grupo | DOSW |
 | Repositorio | [DOSW_ParcialT2_DanielVillamizar](https://github.com/ChanguaLover4ever/DOSW_ParcialT2_DanielVillamizar) |
 | Rama de trabajo | `develop` |
-| Profesor agregado como colaborador | PENDIENTE: confirma en GitHub |
 
 ## 2. Descripción del proyecto
 
